@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    <form method="post">
+        <h1>
+            Editar post
+        </h1>
+        
+        {% csrf_token %}
+        
+        {{form}}
+
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    </form>
+{% endblock content %}
+
+
+{% block sidebar %}
+    
+{% endblock sidebar %}
+    
+    

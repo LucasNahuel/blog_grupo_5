@@ -2,7 +2,7 @@ form{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 900px !important;
     gap: 1em;
 }
 
@@ -13,4 +13,39 @@ form button{
 
 form h1{
     margin-block: 0.5em;
+}
+
+
+#container{
+    padding-top: 1em;
+    min-height: calc(100vh - 176px);
+}
+
+
+.form-eliminar{
+    position: absolute;
+    inset: 0 0 0 0;
+    margin: auto auto;
+    height: fit-content;
+}
+
+.fw-bolder{
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+.lead.mb-0{
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+.link-icon{
+    background-color: darkgray;
+    height: 2.5em;
+    padding: 0.5em;
+    border-radius: 50%;
+    width: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

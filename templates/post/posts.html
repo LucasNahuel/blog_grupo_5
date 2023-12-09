@@ -4,7 +4,18 @@
 
 {% block content %}
 
-<div class="col-lg-8">
+<div class="col-lg-8" >
+    
+    <div style="display: flex; width: 100%; margin-bottom: 1.5em; align-items: center;">
+
+            <h1>Últimos posts</h1>
+        
+            <a href="{% url 'crear_post' %}" style="width: fit-content; margin-left: auto; padding: 0;" ><button class="btn btn-primary">Crear nuevo post</button></a>
+        
+    </div>
+    
+    
+    
     <div class="row">
     {% for post in posts %}
     
@@ -16,6 +27,11 @@
                     <h2 class="card-title h4">{{post.titulo}}</h2>
                     <p class="card-text">{{post.cuerpo}}</p>
                     <a class="btn btn-primary" href="#!">Read more →</a>
+                </div>
+
+                <div style="position: absolute; padding: 1em; top:0; right: 0; display: flex; gap: 1em;">
+                    <a href="{% url 'eliminar_post' post.id %}" class="link-icon text-danger"><i class="fa-solid fa-trash"></i></a>
+                    <a href="{% url 'editar_post' post.id %}" class="link-icon text-success"><i class="fa-solid fa-pen-to-square"></i></a>
                 </div>
             </div>
         </div>
