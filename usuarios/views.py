@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
 from .models import Usuario
-from .forms import RegistrarseForm
-from django.contrib.auth import login
+from .forms import RegistrarseForm, UserLoginForm
+from django.contrib.auth import login, views
 
 # Create your views here.
 
@@ -19,3 +18,7 @@ class RegistrarseView(CreateView):
         return response
 
 
+class LoginView(views.LoginView):
+    model = Usuario
+    template_name = 'usuarios/login.html'
+    form_class = UserLoginForm

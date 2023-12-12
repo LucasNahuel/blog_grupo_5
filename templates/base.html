@@ -31,22 +31,29 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <span>
                     
-                        {% if user.is_authenticated %}
-                            <a href=""> {{user.first_name}} </a>
-                        {% else %}
-                            <a href ="{% url 'login' %}">Iniciar Sesion</a>
-                        {% endif %}
-                            
-                    </span>  
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="">{{user.first_name}}</a></li>
+                            
+                        {% else %}
+
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a></li>
+                           
+                        {% endif %}
                         
                         <li class="nav-item"><a class="nav-link" href="{% url 'posts' %}">Posts</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Nosotros</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a></li>
+                        
+                        
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a></li>
+                        {% endif %}
+                            
+                        
                     </ul>
                 </div>
             </div>
@@ -75,31 +82,31 @@
                 <div class="col-lg-4">
                     <!-- Search widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Search</div>
+                        <div class="card-header">Buscar</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                                <input class="form-control" type="text" placeholder="Busca algo..." aria-label="Busca algo..." aria-describedby="button-search" />
+                                <button class="btn btn-primary" id="button-search" type="button">Ir!</button>
                             </div>
                         </div>
                     </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Categories</div>
+                        <div class="card-header">Categorías</div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
+                                        <li><a href="#!">PlayStation</a></li>
+                                        <li><a href="#!">Xbox</a></li>
+                                        <li><a href="#!">PC</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
+                                        <li><a href="#!">Acción</a></li>
+                                        <li><a href="#!">RPG</a></li>
+                                        <li><a href="#!">Deportes</a></li>
                                     </ul>
                                 </div>
                             </div>

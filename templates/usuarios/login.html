@@ -3,11 +3,15 @@
 
 {% block content %}
 
+    
     <form method ="post"> {% csrf_token %}
+        <h1>Iniciar sesión</h1>
         {{form}}
-        <button type ="submit">Iniciar Sesion</button>
-        <a href="{% url 'registrarse' %}">No tenes una cuenta? Create una.</a>
-    </form>    
+        <button type ="submit" class="btn btn-primary">Iniciar Sesión</button>
+        <a href="{% url 'registrarse' %}">¿No tenés una cuenta? Créate una.</a>
+    </form> 
+    
+       
 
     
 {% endblock content %}

@@ -2,12 +2,17 @@
 
 
 {% block content %}
-    <h1>Crear Usuario</h1>
-
-    <form method ="post"> {% csrf_token %}
-        {{form}}
-        <button type="submit">Crear Usuario</button>
-    </form>    
+    
+    <form method ="post">
+         {% csrf_token %}
+            <h1>Registro</h1>
+        
+            {{form}}
+            <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        
+    </form>  
+    
+      
     
 {% endblock content %}
     

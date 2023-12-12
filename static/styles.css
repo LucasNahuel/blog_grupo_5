@@ -1,3 +1,7 @@
+:root{
+    --warning: #dc3545;
+}
+
 form{
     display: flex;
     flex-direction: column;
@@ -48,4 +52,18 @@ form h1{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+ul.errorlist.nonfield{
+    padding-left: 0;
+    list-style: none;
+}
+
+ul.errorlist.nonfield li{
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 0.5em;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    border-color: #f5c6cb;
 }
