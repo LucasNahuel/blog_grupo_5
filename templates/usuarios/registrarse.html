@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Crear Usuario</h1>
+
+    <form method ="post"> {% csrf_token %}
+        {{form}}
+        <button type="submit">Crear Usuario</button>
+    </form>    
+    
+{% endblock content %}
+    
+{% block sidebar %}
+    
+{% endblock sidebar %}

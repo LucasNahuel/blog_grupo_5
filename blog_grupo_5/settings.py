@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#Defino modelo de usuario
+
+AUTH_USER_MODEL='usuarios.Usuario'
+
+#Variables de login
+LOGIN_REDIRECT_URL ='/post/'
+LOGIN_URL ='usuarios/login'
 
 # Application definition
 
@@ -37,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'post'
+    'post',
+    'usuarios'
 ]
 
 MIDDLEWARE = [
@@ -75,12 +83,14 @@ WSGI_APPLICATION = 'blog_grupo_5.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'blog',
-    'USER': 'usuario',
-    'PASSWORD': 'contrasenia123',
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'post',
+        'USER': 'root',
+        'PASSWORD': '#Pochy2020*',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
 }
 
 # Password validation
@@ -105,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ar'
 
 TIME_ZONE = 'UTC'
 

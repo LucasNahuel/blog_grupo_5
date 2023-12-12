@@ -19,8 +19,10 @@ from django.urls import path, include
 from .views import index
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('post/', include('post.urls')),
+    path('usuarios/', include ('usuarios.urls')),
 ]
