@@ -67,3 +67,12 @@ ul.errorlist.nonfield li{
     border-radius: 0.25rem;
     border-color: #f5c6cb;
 }
+
+div.card form{
+    width: auto;
+    margin: 1em;
+}
+
+footer{
+    margin-top: 5em;
+}

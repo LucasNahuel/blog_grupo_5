@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-lg-8" >
+
+    <div class="card mb-4">
+        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
+        <div class="card-body">
+            <div class="small text-muted">{{post.fecha}} por @{{post.creador.username}}</div>
+            <h1 class="card-title">{{post.titulo}}</h1>
+            <p class="card-text">{{post.cuerpo}}</p>
+            
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">Comenta algo</div>
+        <form method="post"> {% csrf_token %}
+            {{form}}
+    
+            <button type="submit" class="btn btn-primary">Comentar!</button>
+    
+        </form>
+    </div>
+    
+
+    <!--Caja de Comentarios-->
+    <div class="card">
+        <div class="card-header">
+        Comentarios
+        </div>
+        <ul class="list-group list-group-flush">
+
+
+            
+            {% for comentario in post.comentarios.all %}
+            
+            
+            <li class="list-group-item">
+                
+                <p><strong>@{{comentario.creador.username}}</strong> dijo:</p>
+                {{comentario.texto}}
+            </li>
+            {% endfor %}
+                
+
+
+        </ul>
+    </div>
+
+</div>
+{% endblock content %}
