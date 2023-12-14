@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from typing import Any
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from .models import post
+from .models import post, Comentario
 from .forms import Crear_post as Crear_post_form
 from .forms import ComentarioForm
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+#from .mixins import ColaboradorMixin, CreadorMixin
 
 # Create your views here.
 
@@ -24,10 +27,7 @@ class Crear_post(CreateView):
     
 
     def get_success_url(self):
-        return reverse('crear_post')
-
-
-
+        return reverse('posts')
 
 
 class Editar_post(UpdateView):
@@ -55,7 +55,8 @@ class Detalle_Post(DetailView):
 
 
     def post(self, request, *args, **kwargs):
-
+        if not self.request.user.is_authenticated:
+            return redirect ('posts')
         publicacion = self.get_object()
         form = ComentarioForm(request.POST)
 
@@ -67,3 +68,18 @@ class Detalle_Post(DetailView):
             return super().get(request)
         else:
             return super().get(request)
+        
+class BorrarComentarioView(DeleteView):
+    template_name='comentarios/borrar_comentario.html'
+    model= Comentario
+    
+    def get_success_url(self):
+        return reverse ('detalle_post', args =[self.object.publicacion.id] ) #modificar por post.id
+    
+class EditarComentarioView(UpdateView):
+    template_name= 'comentarios/editar_comentario.html'
+    model= Comentario
+    form_class =ComentarioForm
+    
+    def get_success_url(self):
+        return reverse ('detalle_post', args =[self.object.publicacion.id] ) #modificar por post.id

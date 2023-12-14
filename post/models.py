@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from usuarios.models import Usuario
+
+
 # Create your models here.
 
 class Categoria(models.Model):
@@ -26,7 +28,7 @@ class post(models.Model):
 class Comentario(models.Model):
     fecha = models.DateField(auto_now_add=True)
     texto = models.TextField()
-    publicacion = models.ForeignKey(post, on_delete=models.CASCADE, related_name='comentarios')
+    publicacion = models.ForeignKey(post, on_delete=models.CASCADE, related_name='comentarios') #modificar por post.id
     creador = models.ForeignKey(Usuario, related_name='comentarios', on_delete=models.CASCADE)
 
     def __str__(self):

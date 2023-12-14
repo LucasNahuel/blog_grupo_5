@@ -33,18 +33,26 @@
         <ul class="list-group list-group-flush">
 
 
-            
+            {% if post.comentarios.all%}
+
             {% for comentario in post.comentarios.all %}
-            
             
             <li class="list-group-item">
                 
                 <p><strong>@{{comentario.creador.username}}</strong> dijo:</p>
                 {{comentario.texto}}
+
+                <div style="position: absolute; padding: 1em; bottom:0; right: 0; display: flex; gap: 1em;">
+                <a href="{% url 'borrar_comentario' comentario.id %}" class="link-icon text-danger"><i class="fa-solid fa-trash"></i></a>
+                <a href="{% url 'editar_comentario' comentario.id %}" class="link-icon text-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                </div>    
+
             </li>
             {% endfor %}
                 
-
+            {% else %}
+                <p>No existen comentarios para esta publicación.</p>
+            {% endif %}
 
         </ul>
     </div>
