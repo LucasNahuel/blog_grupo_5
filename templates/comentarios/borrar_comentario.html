@@ -3,8 +3,8 @@
 
 {% block content %}
 
-    <form method="post"> {% csrf_token %}
-        <h4>Esta seguro que quiere eliminar el comentario?
+    <form method="post" class="form-eliminar"> {% csrf_token %}
+        <h4>Esta seguro que quiere eliminar el comentario?</h4>
 
         <button type="submit" class="btn btn-primary">Eliminar comentario</button>
     </form>        

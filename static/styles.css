@@ -22,7 +22,7 @@ form h1{
 
 #container{
     padding-top: 1em;
-    min-height: calc(100vh - 176px);
+    min-height: calc(100vh - 176px) !important;
 }
 
 
@@ -44,10 +44,10 @@ form h1{
 }
 
 .link-icon{
-    background-color: darkgray;
     height: 2.5em;
     padding: 0.5em;
     border-radius: 50%;
+    border-width: 5px;
     width: 2.5em;
     display: flex;
     align-items: center;
@@ -75,4 +75,10 @@ div.card form{
 
 footer{
     margin-top: 5em;
+}
+
+form.d-flex{
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 0 auto;
 }

@@ -4,7 +4,7 @@
 {% block content %}
 <div class="col-lg-8" >
 
-    <div class="card mb-4">
+    <div class="card border-light mb-4">
         <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
         <div class="card-body">
             <div class="small text-muted">{{post.fecha}} por @{{post.creador.username}}</div>
@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="card mb-4">
+    <div class="card border-light mb-4">
         <div class="card-header">Comenta algo</div>
         <form method="post"> {% csrf_token %}
             {{form}}
@@ -26,7 +26,7 @@
     
 
     <!--Caja de Comentarios-->
-    <div class="card">
+    <div class="card border-light">
         <div class="card-header">
         Comentarios
         </div>
