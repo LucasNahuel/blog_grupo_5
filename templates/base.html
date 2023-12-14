@@ -10,7 +10,7 @@
         <meta name="author" content="" />
         <title>Blog juegos - Grupo 5</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/gamepad-solid.svg' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
@@ -63,11 +63,6 @@
                   </li>
                   
 
-                  {% if user.is_authenticated %}
-                    <li class="nav-item">
-                      <a class="nav-link" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerrar sesion</font></font></a>
-                    </li>
-                  {% endif %}
                   
                 </ul>
                 <form class="d-flex">
@@ -115,36 +110,76 @@
                         </div>
                     </div>
                     <!-- Categories widget-->
+
+                    
+                    {% if categorias %}
+                      
+                    
+                      
                     <div class="card border-light mb-4">
                         <div class="card-header">Categorías</div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">PlayStation</a></li>
-                                        <li><a href="#!">Xbox</a></li>
-                                        <li><a href="#!">PC</a></li>
+
+                                      
+                                      {% for categoria in categorias  %}
+                                        {% if forloop.counter < mitad_lista %}
+                                          <li><a href="#!">{{categoria.nombre}}</a></li>
+                                        {% endif %}
+                                      {% endfor %}
+                                        
+
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Acción</a></li>
-                                        <li><a href="#!">RPG</a></li>
-                                        <li><a href="#!">Deportes</a></li>
+                                      {% for categoria in categorias  %}
+                                        {% if forloop.counter > mitad_lista %}
+                                          <li><a href="#!">{{categoria.nombre}}</a></li>
+                                        {% endif %}
+                                      {% endfor %}
+                                        
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    {% endif %}
                     <!-- Side widget-->
+                    {% if comentarios %}
+
                     <div class="card border-light mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                        <div class="card-header">De que se está hablando</div>
+
+                        <ul class="list-group">
+
+
+                          
+              
+                          {% for comentario in comentarios %}
+                          
+                          <li class="list-group-item">
+                              
+                              <p><strong>@{{comentario.creador.username}}</strong> comentó: {{comentario.texto}} en <a href="{% url 'detalle_post' comentario.publicacion.id %}">{{comentario.publicacion.titulo}}</a></p>
+                              
+                          </li>
+                          {% endfor %}
+                              
+                          
+              
+                        </ul>
+                        
+
                     </div>
+
+                    {% endif %}
 
                     
                 </div>
-            {% endblock sidebar %}
+                {% endblock sidebar %}
             
                 </div>
             

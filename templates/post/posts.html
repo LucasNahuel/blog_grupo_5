@@ -26,13 +26,20 @@
                     <div class="small text-muted">{{post.fecha}}</div>
                     <h2 class="card-title h4">{{post.titulo}}</h2>
                     <p class="card-text">{{post.cuerpo}}</p>
-                    <a class="btn btn-primary" href="{% url 'detalle_post' post.id %}">Leer más →</a>
+
+
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <a class="btn btn-primary" href="{% url 'detalle_post' post.id %}">Leer más →</a>
+                    
+                        <div style="display: flex;">
+                            <a href="{% url 'eliminar_post' post.id %}" class="link-icon text-danger"><i class="fa-solid fa-trash"></i></a>
+                            <a href="{% url 'editar_post' post.id %}" class="link-icon text-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </div>
+                    </div>                    
+                    
                 </div>
 
-                <div style="position: absolute; padding: 1em; bottom:0; right: 0; display: flex; gap: 1em;">
-                    <a href="{% url 'eliminar_post' post.id %}" class="link-icon text-danger"><i class="fa-solid fa-trash"></i></a>
-                    <a href="{% url 'editar_post' post.id %}" class="link-icon text-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                </div>
+                
             </div>
         </div>
     
