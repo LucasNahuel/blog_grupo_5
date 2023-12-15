@@ -6,6 +6,7 @@ from .forms import Crear_post as Crear_post_form
 from .forms import ComentarioForm
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .mixins import Colaborador_mixin, Creador_mixin
 #from .mixins import ColaboradorMixin, CreadorMixin
 
 # Create your views here.
@@ -15,7 +16,7 @@ class Lista_post(ListView):
     model = post
     context_object_name = 'posts'
     
-class Crear_post(CreateView):
+class Crear_post(LoginRequiredMixin, CreateView):
     template_name = 'post/crear_post.html'
     model = post
     form_class = Crear_post_form
@@ -30,14 +31,14 @@ class Crear_post(CreateView):
         return reverse('posts')
 
 
-class Editar_post(UpdateView):
+class Editar_post(LoginRequiredMixin, Creador_mixin, UpdateView):
     model = post
     template_name = 'post/editar_post.html'
     form_class = Crear_post_form
     success_url = '../'
 
 
-class Eliminar_post(DeleteView):
+class Eliminar_post(LoginRequiredMixin, Creador_mixin, DeleteView):
     model = post
     template_name = 'post/eliminar_post.html'
     success_url = '../'
@@ -55,8 +56,10 @@ class Detalle_Post(DetailView):
 
 
     def post(self, request, *args, **kwargs):
+
         if not self.request.user.is_authenticated:
             return redirect ('posts')
+        
         publicacion = self.get_object()
         form = ComentarioForm(request.POST)
 
@@ -69,14 +72,14 @@ class Detalle_Post(DetailView):
         else:
             return super().get(request)
         
-class BorrarComentarioView(DeleteView):
+class BorrarComentarioView(LoginRequiredMixin, Creador_mixin, DeleteView):
     template_name='comentarios/borrar_comentario.html'
     model= Comentario
     
     def get_success_url(self):
         return reverse ('detalle_post', args =[self.object.publicacion.id] ) #modificar por post.id
     
-class EditarComentarioView(UpdateView):
+class EditarComentarioView(LoginRequiredMixin, Creador_mixin, UpdateView):
     template_name= 'comentarios/editar_comentario.html'
     model= Comentario
     form_class =ComentarioForm

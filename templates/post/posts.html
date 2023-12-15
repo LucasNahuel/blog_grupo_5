@@ -10,7 +10,12 @@
 
             <h1>Últimos posts</h1>
         
-            <a href="{% url 'crear_post' %}" style="width: fit-content; margin-left: auto; padding: 0;" ><button class="btn btn-primary">Crear nuevo post</button></a>
+            
+            {% if user.is_authenticated and user.es_colaborador%}
+                <a href="{% url 'crear_post' %}" style="width: fit-content; margin-left: auto; padding: 0;" ><button class="btn btn-primary">Crear nuevo post</button></a>
+
+            {% endif %}
+                
         
     </div>
     
@@ -31,10 +36,16 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <a class="btn btn-primary" href="{% url 'detalle_post' post.id %}">Leer más →</a>
                     
-                        <div style="display: flex;">
-                            <a href="{% url 'eliminar_post' post.id %}" class="link-icon text-danger"><i class="fa-solid fa-trash"></i></a>
-                            <a href="{% url 'editar_post' post.id %}" class="link-icon text-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                        </div>
+
+                        
+                        {% if post.creador == user or user.is_superuser %}
+                            <div style="display: flex;">
+                                <a href="{% url 'eliminar_post' post.id %}" class="link-icon text-danger"><i class="fa-solid fa-trash"></i></a>
+                                <a href="{% url 'editar_post' post.id %}" class="link-icon text-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </div>
+                        {% endif %}
+                            
+                       
                     </div>                    
                     
                 </div>
