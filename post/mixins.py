@@ -11,7 +11,7 @@ class Creador_mixin(UserPassesTestMixin):
         usuario = self.request.user
         objeto = self.get_object()
 
-        if isinstance(object, post):
+        if isinstance(objeto, post):
             return usuario == objeto.creador or usuario.is_superuser
         elif isinstance(objeto, Comentario):
             return usuario == objeto.creador or usuario.is_superuser or usuario == objeto.publicacion.creador
