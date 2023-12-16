@@ -26,7 +26,13 @@
         
             
         <div class="card border-light mb-4">
-            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+
+            {% if ultimos_posts.0.imagen %}
+            <img src="{{ ultimos_posts.0.imagen.url }}" class="card-img-top" alt="...">
+            {% else %}
+            <img src="{% static 'images/abstract_digital-gamepad-sl-800x450.jpg' %}" class="card-img-top" alt="...">
+            {% endif %}
+            
             <div class="card-body">
                 <div class="small text-muted">{{ultimos_posts.0.fecha}}</div>
                 <h2 class="card-title">{{ultimos_posts.0.titulo}}</h2>
@@ -45,7 +51,13 @@
                 <div class="col-lg-4">
                         
                     <div class="card border-light mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+
+                        {% if post.imagen %}
+                            <img src="{{ post.imagen.url }}" class="card-img-top" alt="...">
+                        {% else %}
+                            <img src="{% static 'images/abstract_digital-gamepad-sl-800x450.jpg' %}" class="card-img-top" alt="...">
+                        {% endif %}
+
                         <div class="card-body">
                             <div class="small text-muted">{{post.fecha}}</div>
                             <h2 class="card-title h4">{{post.titulo}}</h2>

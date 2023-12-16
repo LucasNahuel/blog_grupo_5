@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<div class="col-lg-2"></div>
 <div class="col-lg-8" >
 
     <div class="card border-light mb-4">
@@ -49,7 +50,7 @@
     <!--Caja de Comentarios-->
     <div class="card border-light">
         <div class="card-header">
-        Comentarios
+        Comentarios ({{post.comentarios.all|length}})
         </div>
         <ul class="list-group list-group-flush">
 
@@ -81,11 +82,19 @@
             {% endfor %}
                 
             {% else %}
-                <p>No existen comentarios para esta publicación.</p>
+                <li class="list-group-item" style="display: flex; align-items: center; justify-content: center;">
+                    <p class="text-warning">Sé el primero en comentar este post!</p>
+                </li>
             {% endif %}
 
         </ul>
     </div>
+
+    
+    {% block sidebar %}
+        
+    {% endblock sidebar %}
+        
 
 </div>
 {% endblock content %}

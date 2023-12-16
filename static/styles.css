@@ -2,7 +2,7 @@
     --warning: #dc3545;
 }
 
-form{
+form.form-eliminar, form.form-crear{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -26,7 +26,7 @@ form h1{
 }
 
 
-.form-eliminar{
+form.form-eliminar{
     position: absolute;
     inset: 0 0 0 0;
     margin: auto auto;
@@ -60,12 +60,10 @@ ul.errorlist.nonfield{
 }
 
 ul.errorlist.nonfield li{
-    color: #721c24;
-    background-color: #f8d7da;
+    color: var(--bs-white);
+    background-color: var(--bs-form-invalid-color);
     padding: 0.5em;
-    border: 1px solid transparent;
     border-radius: 0.25rem;
-    border-color: #f5c6cb;
 }
 
 div.card form{
@@ -88,4 +86,27 @@ form.form-filtrar{
     flex-direction: row;
     align-items: center;
     max-width: 100%;
+    gap: 1em;
+}
+
+.card-img-top{
+    aspect-ratio: 16/9;
+}
+
+
+.helptext{
+    color: var(--bs-warning);
+}
+
+.errorlist{
+    color: var(--bs-danger);
+}
+
+.card-tags-container{
+    margin-bottom: 1em;
+}
+
+.badge{
+    display: inline-flex;
+    gap: 0.65em;
 }

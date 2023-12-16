@@ -57,12 +57,18 @@
     
         <div class="col-lg-4">
             <div class="card border-light mb-4">
-                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                {% if post.imagen %}
+                    <img src="{{ post.imagen.url }}" class="card-img-top" alt="...">
+                {% else %}
+                    <img src="{% static 'images/abstract_digital-gamepad-sl-800x450.jpg' %}" class="card-img-top" alt="...">
+                {% endif %}
                 <div class="card-body">
                     <div class="small text-muted">{{post.fecha}}</div>
                     <h2 class="card-title h4">{{post.titulo}}</h2>
                     <p class="card-text">{{post.cuerpo}}</p>
-                    <p class="card-text"><i class="fa-solid fa-layer-group"></i> {{post.categoria}}</p>
+
+                    
+                    <div class="card-text card-tags-container"><span class="badge bg-secondary"><i class="fa-solid fa-layer-group"></i>{{post.categoria}}</span> </div>
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <a class="btn btn-primary" href="{% url 'detalle_post' post.id %}">Leer más →</a>

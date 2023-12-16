@@ -9,6 +9,7 @@ class Crear_post(forms.ModelForm):
             'titulo': forms.TextInput(attrs={'class':'form-control'}),
             'cuerpo': forms.Textarea(attrs={'class':'form-control'}),
             'categoria': forms.Select(attrs={'class':'form-select'}),
+            'imagen': forms.ClearableFileInput(attrs={'class':'form-control'})
         }
 
 class ComentarioForm(forms.ModelForm):
