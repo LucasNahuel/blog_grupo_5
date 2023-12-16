@@ -85,9 +85,10 @@ WSGI_APPLICATION = 'blog_grupo_5.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog',
-        'USER': 'usuario',
-        'PASSWORD': 'contrasenia123'
+        'NAME': 'post',
+        'USER': 'root',
+        'HOST': 'localhost',
+        'PASSWORD': '#Pochy2020*'
     }
 }
 
@@ -134,3 +135,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#MEDIA VARIABLES
+
+MEDIA_URL='/media'
+
+MEDIA_ROOT =BASE_DIR / 'media'

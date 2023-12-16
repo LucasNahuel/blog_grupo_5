@@ -17,6 +17,7 @@ class post(models.Model):
     cuerpo = models.TextField()
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, related_name='posts', null=True)
     creador = models.ForeignKey(Usuario, related_name='posts', on_delete=models.CASCADE)
+    imagen =models.ImageField(upload_to='imagenes_post', null=True, blank=True)
 
     def __str__(self):
         return self.titulo

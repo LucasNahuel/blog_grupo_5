@@ -1,7 +1,8 @@
 from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from .models import post, Comentario
+from .models import post, Comentario, Categoria
 from .forms import Crear_post as Crear_post_form
 from .forms import ComentarioForm
 from django.urls import reverse
@@ -15,6 +16,34 @@ class Lista_post(ListView):
     template_name = 'post/posts.html'
     model = post
     context_object_name = 'posts'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categorias'] = Categoria.objects.all()
+        return context
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        categoria_seleccionada= self.request.GET.get('categoria')
+        
+        if categoria_seleccionada:
+            queryset = queryset.filter(categoria=categoria_seleccionada)
+         
+        #Ordenar las publicaciones
+        orden= self.request.GET.get('orderby') 
+        if orden:
+            if orden == 'fecha_asc':
+                queryset =queryset.order_by('fecha')
+            elif orden =='fecha_desc':
+                queryset == queryset.order_by('-fecha')
+            elif orden == 'alf_asc':
+                queryset == queryset.order_by('titulo')   
+            elif orden == 'alf_desc':
+                queryset == queryset.order_by('-titulo')            
+                     
+        return queryset    
+        
     
 class Crear_post(LoginRequiredMixin, CreateView):
     template_name = 'post/crear_post.html'
