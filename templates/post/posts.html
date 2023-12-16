@@ -4,9 +4,8 @@
 
 {% block content %}
 
- 
 
-<div class="col-lg-8" >
+<div class="col-lg-12" >
     
     <div style="display: flex; width: 100%; margin-bottom: 1.5em; align-items: center;">
 
@@ -19,6 +18,36 @@
             {% endif %}
                 
         
+    </div>
+
+    <div>
+        <!--filtrar por categoria  -->
+
+        <form method="get" class="form-filtrar">
+            <select name="categoria" id="" class="form-select">
+                <option value="">Todas</option>
+                
+                {% for categoria in categorias %}
+                <option value="{{categoria.id}}"> {{categoria.nombre}}</option>
+                    
+                {% endfor %}
+
+            </select>    
+
+          <!--Ordenar-->   
+
+          <select name="orderby" id="" class="form-select">
+            <option value="">Ordenar por</option>
+            <option value="fecha_asc">Fecha ascendente</option>
+            <option value="fecha_desc">Fecha descendente</option> 
+            <option value="alf_asc">Alfabéticamente ascendente</option>
+            <option value="alf_desc">Alfabéticamente descendente</option>
+
+          </select>
+
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+
+          </form>
     </div>
     
     
@@ -57,6 +86,13 @@
 
     {% endfor %}
 </div>
+
+
+{% block sidebar %}
+    
+{% endblock sidebar %}
+    
+
 </div>
 {% endblock content %}
     

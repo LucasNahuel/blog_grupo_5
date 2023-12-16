@@ -85,10 +85,10 @@ WSGI_APPLICATION = 'blog_grupo_5.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'post',
-        'USER': 'root',
+        'NAME': 'blog',
+        'USER': 'usuario',
         'HOST': 'localhost',
-        'PASSWORD': '#Pochy2020*'
+        'PASSWORD': 'contrasenia123'
     }
 }
 

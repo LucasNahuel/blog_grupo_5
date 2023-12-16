@@ -121,39 +121,13 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    {% comment %} <ul class="list-unstyled mb-0"> {% endcomment %}
+                                    <ul class="list-unstyled mb-0">
 
-                                      <!--filtrar por categoria  -->
-
-                                          <form method="get">
-                                            <select name="categoria" id="">
-                                                <option value="">Todas</option>
-                                                
-                                                {% for categoria in categorias %}
-                                                <option value="{{categoria.id}}"> {{categoria.nombre}}</option>
-                                                    
-                                                {% endfor %}
-
-                                            </select>    
-
-                                          <!--Ordenar-->   
-
-                                          <select name="orderby" id="">
-                                            <option value="">Ordenar por</option>
-                                            <option value="fecha_asc">Fecha ascendente</option>
-                                            <option value="fecha_desc">Fecha descendente</option> 
-                                            <option value="alf_asc">Alfabéticamente ascendente</option>
-                                            <option value="alf_desc">Alfabéticamente descendente</option>
-
-                                          </select>
-
-                                            <button type="submit" class="btn btn-primary">Filtrar</button>
-
-                                          </form>   
+                                         
                                       
-                                    {% comment %}   {% for categoria in categorias  %}
+                                     {% for categoria in categorias  %}
                                         {% if forloop.counter < mitad_lista %}
-                                          <li><a href="#!">{{categoria.nombre}}</a></li>
+                                          <li><a href="{% url 'posts' %}?categoria={{ categoria.id }}">{{categoria.nombre}}</a></li>
                                         {% endif %}
                                       {% endfor %} 
                                       
@@ -163,12 +137,11 @@
                                     <ul class="list-unstyled mb-0">
                                       {% for categoria in categorias  %}
                                         {% if forloop.counter > mitad_lista %}
-                                          <li><a href="#!">{{categoria.nombre}}</a></li>
+                                          <li><a href="{% url 'posts' %}?categoria={{ categoria.id }}">{{categoria.nombre}}</a></li>
                                         {% endif %}
                                       {% endfor %}
                                         
                                     </ul> 
-                                    {% endcomment %}
                                 </div>
                             </div>
                         </div>

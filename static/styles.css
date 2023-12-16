@@ -6,7 +6,7 @@ form{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    max-width: 900px !important;
+    max-width: 900px;
     gap: 1em;
 }
 
@@ -81,4 +81,11 @@ form.d-flex{
     display: flex;
     flex-direction: row;
     margin: 0 0 0 auto;
+}
+
+form.form-filtrar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
 }
