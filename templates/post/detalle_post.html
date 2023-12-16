@@ -5,7 +5,14 @@
 <div class="col-lg-8" >
 
     <div class="card border-light mb-4">
-        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
+        
+        {% if post.imagen %}
+        <a href="#!"><img class="card-img-top" src="{{ post.imagen.url}}" alt="..."></a>
+        {% else %}
+        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
+        {% endif %}
+            
+        
         <div class="card-body">
             <div class="small text-muted">{{post.fecha}} por @{{post.creador.username}}</div>
             <h1 class="card-title">{{post.titulo}}</h1>

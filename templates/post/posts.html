@@ -13,7 +13,7 @@
             <h1>Últimos posts</h1>
         
             
-            {% if user.is_authenticated and user.es_colaborador%}
+            {% if user.is_authenticated and user.es_colaborador or user.is_superuser%}
                 <a href="{% url 'crear_post' %}" style="width: fit-content; margin-left: auto; padding: 0;" ><button class="btn btn-primary">Crear nuevo post</button></a>
 
             {% endif %}
