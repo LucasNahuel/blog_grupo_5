@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'post',
-    'usuarios'
+    'usuarios',
+    'contacto',
 ]
 
 MIDDLEWARE = [
@@ -85,10 +86,10 @@ WSGI_APPLICATION = 'blog_grupo_5.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog',
-        'USER': 'usuario',
+        'NAME': 'post',
+        'USER': 'root',
         'HOST': 'localhost',
-        'PASSWORD': 'contrasenia123'
+        'PASSWORD': '#Pochy2020*'
     }
 }
 
