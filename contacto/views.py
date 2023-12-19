@@ -12,7 +12,8 @@ def form_contacto(request):
         form = ContactoForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Mensaje enviado correctamente.')
+            messages.add_message(request, messages.SUCCESS, "Mensaje enviado correctamente.", "alert alert-success alert-dismissible fade show")
+
             return redirect('form_contacto')
     else:
         form = ContactoForm()

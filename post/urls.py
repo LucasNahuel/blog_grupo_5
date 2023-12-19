@@ -1,4 +1,4 @@
-from .views import Lista_post, Crear_post, Editar_post, Eliminar_post, Detalle_Post,BorrarComentarioView,EditarComentarioView
+from .views import Lista_post, Crear_post, Editar_post, Eliminar_post, Detalle_Post,BorrarComentarioView,EditarComentarioView, Buscar_post
 from django.urls import path
 
 
@@ -10,5 +10,5 @@ urlpatterns = [
     path('detalle/<int:pk>', Detalle_Post.as_view(), name='detalle_post'),
     path('borrar_comentario/<int:pk>', BorrarComentarioView.as_view(), name="borrar_comentario"),
     path('editar_comentario/<int:pk>', EditarComentarioView.as_view(), name="editar_comentario"),
-    
+    path('buscar/', Buscar_post, name="buscar_post")
 ]

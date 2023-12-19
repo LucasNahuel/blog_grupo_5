@@ -68,8 +68,8 @@
                  
                   
                 </ul>
-                <form class="d-flex">
-                  <input class="form-control me-sm-2" type="search" placeholder="Buscar">
+                <form class="d-flex" action="{% url 'buscar_post' %}">
+                  <input class="form-control me-sm-2" type="search" placeholder="Buscar" name="q">
                   <button class="btn btn-secondary my-2 my-sm-0" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar</font></font></button>
                 </form>
               </div>
@@ -88,7 +88,16 @@
 
         <!-- Page content-->
         <div class="container" id="container">
-         
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li {% if message.tags %} class="{{ message.tags }}"{% endif %} role="alert">{{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </li>
+        
+            {% endfor %}
+          </ul>
+          {% endif %}
             
                 
             <div class="row">
@@ -129,7 +138,7 @@
                                          
                                       
                                      {% for categoria in categorias  %}
-                                        {% if forloop.counter < mitad_lista %}
+                                        {% if forloop.counter <= mitad_lista %}
                                           <li><a href="{% url 'posts' %}?categoria={{ categoria.id }}">{{categoria.nombre}}</a></li>
                                         {% endif %}
                                       {% endfor %} 

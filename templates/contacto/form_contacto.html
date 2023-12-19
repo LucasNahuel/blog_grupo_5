@@ -1,35 +1,25 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 
 
 {% block content %}
 
-<h2>Formulario de Contacto</h2>
+
 
 <form method ='post' class="form-crear">
     {% csrf_token %}
 
-    <h1>Mensage</h1>
+    <h1>Déjanos tu mensaje</h1>
         
             {{form}}
             <button type="submit" class="btn btn-primary">Enviar Mensage</button>
         
-            {% if messages %}
-            <ul class="messages">
-              {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
+            
           
     </form>  
 
   
-    <h2>Mensajes:</h2>
-        {% for mensaje in mensajes %}
-            <p>{{ mensaje.nombre }} - {{ mensaje.correo }} - {{ mensaje.mensaje }}</p>
-        {% endfor %}
 
 
 {% endblock content %}

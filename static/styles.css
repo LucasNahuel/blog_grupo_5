@@ -110,3 +110,11 @@ form.form-filtrar{
     display: inline-flex;
     gap: 0.65em;
 }
+
+.messages{
+    list-style: none;
+}
+
+button{
+    display: inline-flex;
+}

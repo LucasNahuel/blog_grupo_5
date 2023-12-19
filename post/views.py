@@ -114,4 +114,19 @@ class EditarComentarioView(LoginRequiredMixin, Creador_mixin, UpdateView):
     form_class =ComentarioForm
     
     def get_success_url(self):
-        return reverse ('detalle_post', args =[self.object.publicacion.id] ) #modificar por post.id
+        return reverse ('detalle_post', args =[self.object.publicacion.id] ) #modificar por postid
+    
+
+
+def Buscar_post(request):
+    post_coincidentes_titulos = post.objects.filter(titulo__contains=request.GET.get('q'))
+
+    post_coincidentes_cuerpo = post.objects.filter(cuerpo__contains=request.GET.get('q'))
+
+    posts = post_coincidentes_titulos.union(post_coincidentes_cuerpo, all=False)
+
+    ctx = {
+        'posts' : posts
+    }
+
+    return render(request, 'post/buscar_post.html', ctx)
