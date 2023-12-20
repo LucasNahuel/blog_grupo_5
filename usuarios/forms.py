@@ -15,7 +15,7 @@ class RegistrarseForm(UserCreationForm):
 
     class Meta:
         model=Usuario
-        fields=['first_name', 'last_name', 'username', 'password1', 'password2', 'email','telefono', 'domicilio']
+        fields=['first_name', 'last_name', 'username', 'password1', 'password2', 'email','telefono', 'domicilio','imagen_perfil']
         widgets={
             'first_name': forms.TextInput(attrs={'class':'form-control'}),
             'last_name': forms.TextInput(attrs={'class':'form-control'}),
@@ -41,3 +41,7 @@ class UserLoginForm(AuthenticationForm):
         model=Usuario
         fields=['username', 'password']
        
+class EditarPerfilForm(forms.ModelForm):
+    class Meta:
+        model=Usuario
+        fields=['email', 'domicilio','telefono','imagen_perfil']

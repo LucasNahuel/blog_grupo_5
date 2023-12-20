@@ -611,6 +611,11 @@ progress {
   height: auto;
 }
 
+.img-perfil {
+  max-width: 40px;
+  height: 40px;
+}
+
 .figure {
   display: inline-block;
 }
