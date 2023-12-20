@@ -40,16 +40,15 @@
                       
                       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{user.username}}</font></font>
                       
-                      {% if user.imagen_perfil %}
-                      <img src="{{user.imagen_perfil.url}}" alt="" style="height: 40px; width: 40px;">
+                    {% if user.imagen_perfil %}
+                      <img src="{{user.imagen_perfil.url}}" alt="" class="miniature-pp">
                     {% else %}  
-                    <img src="{% static 'images/default-avatar.jpg' %}" alt="Default Avatar" style="height: 40px; width: 40px;">
+                      <img src="{% static 'images/default-avatar.jpg' %}" alt="Default Avatar" class="miniature-pp">
                     {% endif %}
                   </a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href=" {% url 'mi-perfil' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mi Perfil</font></font></a>
-                        <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Otra acción</font></font></a>
-                        <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">algo mas aqui</font></font></a>
+                        <a class="dropdown-item" href=" {% url 'mi-perfil' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mi perfil</font></font></a>
+                        <a class="dropdown-item" href="{% url 'editar-perfil' user.id %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editar perfil</font></font></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'logout' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerrar sesión</font></font></a>
                       </div>
@@ -69,7 +68,7 @@
                     <a class="nav-link" href="{% url 'posts' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Posts</font></font></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nosotros</font></font></a>
+                    <a class="nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Acerca de</font></font></a>
                   </li>
                   
                   <li class="nav-item">

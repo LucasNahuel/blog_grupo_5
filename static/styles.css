@@ -118,3 +118,27 @@ form.form-filtrar{
 button{
     display: inline-flex;
 }
+
+.navbar-nav.me-auto{
+    display: flex;
+    align-items: center;
+}
+
+.nav-link.dropdown-toggle{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.miniature-pp{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.profile-detail-img-container{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

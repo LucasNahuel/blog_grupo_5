@@ -1,5 +1,6 @@
 from typing import Any
 from django.db.models.query import QuerySet
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .models import post, Comentario, Categoria
@@ -8,6 +9,7 @@ from .forms import ComentarioForm
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .mixins import Colaborador_mixin, Creador_mixin
+from django.contrib import messages
 #from .mixins import ColaboradorMixin, CreadorMixin
 
 # Create your views here.
@@ -57,6 +59,8 @@ class Crear_post(LoginRequiredMixin, CreateView):
     
 
     def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Post creado correctamente.", "alert alert-success alert-dismissible fade show")
+
         return reverse('posts')
 
 
@@ -66,11 +70,21 @@ class Editar_post(LoginRequiredMixin, Creador_mixin, UpdateView):
     form_class = Crear_post_form
     success_url = '../'
 
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Post editado correctamente.", "alert alert-success alert-dismissible fade show")
+
+        return reverse('detalle_post', args =[self.object.id])
+
 
 class Eliminar_post(LoginRequiredMixin, Creador_mixin, DeleteView):
     model = post
     template_name = 'post/eliminar_post.html'
     success_url = '../'
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Post eliminado correctamente.", "alert alert-success alert-dismissible fade show")
+
+        return reverse('posts')
 
 
 class Detalle_Post(DetailView):
@@ -106,6 +120,8 @@ class BorrarComentarioView(LoginRequiredMixin, Creador_mixin, DeleteView):
     model= Comentario
     
     def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Comentario eliminado correctamente.", "alert alert-success alert-dismissible fade show")
+
         return reverse ('detalle_post', args =[self.object.publicacion.id] ) #modificar por post.id
     
 class EditarComentarioView(LoginRequiredMixin, Creador_mixin, UpdateView):
@@ -114,6 +130,8 @@ class EditarComentarioView(LoginRequiredMixin, Creador_mixin, UpdateView):
     form_class =ComentarioForm
     
     def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Comentario editado correctamente.", "alert alert-success alert-dismissible fade show")
+
         return reverse ('detalle_post', args =[self.object.publicacion.id] ) #modificar por postid
     
 

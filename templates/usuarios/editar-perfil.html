@@ -2,10 +2,11 @@
 
 
 {% block content %}
-    <form method='post' enctype ="multipart/form-data" class="form-crear"> 
+    <form method='post' enctype ="multipart/form-data" class="form-crear">
+        <h1>Editar perfil</h1> 
         {% csrf_token %}
         {{form}}
-        <button type="submit"> Guardar cambios</button>
+        <button type="submit" class="btn btn-secondary"> Guardar cambios</button>
 
     </form>   
 
