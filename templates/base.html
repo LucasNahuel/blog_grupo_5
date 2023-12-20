@@ -182,7 +182,10 @@
                           
                           <li class="list-group-item">
                               
-                              <p><strong>@{{comentario.creador.username}}</strong> comentó: {{comentario.texto}} en <a href="{% url 'detalle_post' comentario.publicacion.id %}">{{comentario.publicacion.titulo}}</a></p>
+                              <p><p style="  display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -webkit-line-clamp: 3;
+                                overflow: hidden;"><strong>@{{comentario.creador.username}}</strong> comentó: {{comentario.texto}}</p>en <a href="{% url 'detalle_post' comentario.publicacion.id %}">{{comentario.publicacion.titulo}}</a></p>
                               
                           </li>
                           {% endfor %}

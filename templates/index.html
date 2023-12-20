@@ -36,7 +36,10 @@
             <div class="card-body">
                 <div class="small text-muted">{{ultimos_posts.0.fecha}}</div>
                 <h2 class="card-title">{{ultimos_posts.0.titulo}}</h2>
-                <p class="card-text">{{ultimos_posts.0.cuerpo}}</p>
+                <p class="card-text" style="display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 4;
+                overflow: hidden;">{{ultimos_posts.0.cuerpo}}</p>
                 <a class="btn btn-primary" href="{% url 'detalle_post' ultimos_posts.0.id %}">Leer más →</a>
             </div>
         </div>
@@ -61,7 +64,10 @@
                         <div class="card-body">
                             <div class="small text-muted">{{post.fecha}}</div>
                             <h2 class="card-title h4">{{post.titulo}}</h2>
-                            <p class="card-text">{{post.cuerpo}}</p>
+                            <p class="card-text" style="  display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 3;
+                            overflow: hidden;">{{post.cuerpo}}</p>
                             <a class="btn btn-primary" href="{% url 'detalle_post' post.id %}">Leer más →</a>
                         </div>
                     </div>
