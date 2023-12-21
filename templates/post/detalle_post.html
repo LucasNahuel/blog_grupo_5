@@ -68,7 +68,7 @@
                 
                 
                 {% if comentario.creador == user or comentario.publicacion.creador == user or user.is_superuser %}
-                    <div style="position: absolute; padding: 1em; bottom:0; right: 0; display: flex; gap: 1em;">
+                    <div style="display: flex; gap: 1em; justify-content: end;">
                         
                         <a href="{% url 'borrar_comentario' comentario.id %}" class="link-icon text-danger"><i class="fa-solid fa-trash"></i></a>
                         <a href="{% url 'editar_comentario' comentario.id %}" class="link-icon text-success"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -79,6 +79,7 @@
                  
 
             </li>
+            <hr class="hr"/>
             {% endfor %}
                 
             {% else %}

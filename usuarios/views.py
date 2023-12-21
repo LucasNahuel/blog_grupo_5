@@ -7,7 +7,7 @@ from .forms import RegistrarseForm, UserLoginForm, EditarPerfilForm
 from django.contrib.auth import login, views
 from django.urls import reverse
 from django.contrib import messages
-
+from .mixins import Propietario_perfil
 # Create your views here.
 
 class RegistrarseView(CreateView):
@@ -39,7 +39,7 @@ def mi_perfil_view(request):
     
     return render(request,'usuarios/mi-perfil.html',{})    
 
-class EditarPerfilView(UpdateView):
+class EditarPerfilView(Propietario_perfil, UpdateView):
     model = Usuario
     template_name = 'usuarios/editar-perfil.html'
     form_class=EditarPerfilForm

@@ -72,7 +72,24 @@
                   </li>
                   
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'form_contacto' %}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contacto</font></font></a>
+                    <a class="nav-link" 
+
+                    
+                    {% if user.is_superuser %}
+
+                    
+                    href="{% url 'lista_mensajes' %}"
+
+                    {% else %}
+
+                    href="{% url 'form_contacto' %}"
+                    
+                    {% endif %}
+                      
+
+                    
+                    
+                    ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contacto</font></font></a>
                   </li>
                  
                   
@@ -124,10 +141,12 @@
                     <div class="card border-light mb-4">
                         <div class="card-header">Buscar</div>
                         <div class="card-body">
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Busca algo..." aria-label="Busca algo..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Ir!</button>
+                            <form action="{% url 'buscar_post' %}" style="margin: 0;">
+                            <div class="input-group" style="display: flex; align-items: center;">
+                                <input class="form-control" type="text" placeholder="Busca algo..." aria-label="Busca algo..." aria-describedby="button-search" name="q" style="max-height: 36px;"/>
+                                <button class="btn btn-secondary" id="button-search" type="submit">Ir!</button>
                             </div>
+                          </form>
                         </div>
                     </div>
                     <!-- Categories widget-->

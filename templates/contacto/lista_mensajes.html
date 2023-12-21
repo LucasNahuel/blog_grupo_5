@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <h1>Mensajes recibidos</h1>
+<div class="card border-light" style="max-width: 900px; margin: 2em auto;">
+    <div class="card-header">
+    Mensajes ({{mensajes|length}}) 
+    </div>
+    <ul class="list-group list-group-flush">
+
+
+        {% if mensajes %}
+
+        {% for msj in mensajes %}
+        
+        <li class="list-group-item">
+            
+            <p><strong>{{msj.nombre}}</strong>: {{msj.mensaje}}</p>
+
+            <div style="display: flex; justify-content: end;">
+                <a href="mailto: {{msj.correo}}"><button class="btn btn-secondary">Responder</button></a>
+            </div>
+            
+        </li>
+        <hr class="hr"/>
+        {% endfor %}
+            
+        {% else %}
+            <li class="list-group-item" style="display: flex; align-items: center; justify-content: center;">
+                <p class="text-warning">No hay nuevos mensajes!</p>
+            </li>
+        {% endif %}
+
+    </ul>
+</div>
+{% endblock content %}
+    
+
+{% block sidebar %}
+    
+{% endblock sidebar %}
+    
+
