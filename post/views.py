@@ -10,7 +10,7 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .mixins import Colaborador_mixin, Creador_mixin
 from django.contrib import messages
-#from .mixins import ColaboradorMixin, CreadorMixin
+
 
 # Create your views here.
 

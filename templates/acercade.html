@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4"> <!-- Agregamos una clase container para centrar y controlar el ancho -->
+  <div class="card border-secondary mb-3" style="max-width: 50rem;">
+   
+    <div>
+      <h2>Quiénes Somos</h2>
+      <br>
+      <p class="lead">Blog G5 es una web dedicada al mundo del videojuego, compuesta por un equipo de 
+        editores con años de experiencia en PC y consolas, con muchas ganas de informar y entretener con contenidos relacionados 
+        al mundo del videojuego. 
+        Fundada en 2005, Blog G5 se ha convertido en un sitio web de referencia para los aficionados al mundo del
+         gaming, formando una comunidad muy exigente y bien informada deseosa de dar su opinión en noticias, reportajes, 
+         análisis y vídeos sobre lanzamientos en software y hardware para PC, PlayStation, Xbox, Nintendo y móviles, sobre 
+         lo más novedoso y curioso de la tecnología y sobre los nuevos estrenos y los grandes clásicos del videojuego.</p>
+    </div>
+ 
+  </div>
+
+  <div id="contacto">
+    <a href="{% url 'form_contacto' %}" class="btn btn-outline-secondary btn-md">Contacta con Nosotros</a>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row" style="max-width: 70rem;">
+      <div class="col-lg-6 mb-4" >
+        <div class="card border-light">
+          <div class="card-body">
+            <h2 class="card-title">Bebion Maria de los Angeles</h2><br>
+              <div>
+                <img src="{% static 'images/default-avatar.jpg' %}" class="img-fluid" alt="...">
+              </div>
+            
+            <p class="card-text">Editor. En 3DJuegos desde hace un año, 958 artículos publicados</p><br>
+            <p class="card-text">Redactora de 3DJuegos especializada en la elaboración de guías y trucos. 
+              También elaboro artículos sobre la actualidad de los videojuegos, así como de cine y anime. 
+              Pueden verme en algunos directos del canal, así como en las coberturas de eventos.</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-6 mb-4">
+        <div class="card border-light">
+          <div class="card-body">
+            <h2 class="card-title">Muñoz Lucas</h2><br>
+                <div>
+                  <img src="{% static 'images/default-avatar.jpg' %}" class="img-fluid" alt="...">
+                </div>
+            <p class="card-text">Editor. En 3DJuegos desde hace un año, 928 artículos publicados</p><br>
+            <p class="card-text">Redactor en 3DJuegos y medio periodista, medio técnico informático, al 
+              menos eso es lo que dice mi título. Estoy en esto de teclear y hablar de videojuegos, cómics
+               o cine, es decir, lo que me gusta, desde el 2017. Tengo debilidad por los juegos de estrategia,
+                fantasía y acción, no en ese orden. Aunque si tienen una buena historia, ya me han ganado. 
+                De vez en cuando, hablo de El Señor de los Anillos, quizá más de lo normal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  {% block sidebar %}
+{% endblock sidebar %}
+</div>
+
+{% endblock content %}
+    

@@ -8,6 +8,7 @@ from django.contrib.auth import login, views
 from django.urls import reverse
 from django.contrib import messages
 from .mixins import Propietario_perfil
+
 # Create your views here.
 
 class RegistrarseView(CreateView):
