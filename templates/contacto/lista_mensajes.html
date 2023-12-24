@@ -20,8 +20,10 @@
             
             <p><strong>{{msj.nombre}}</strong>: {{msj.mensaje}}</p>
 
-            <div style="display: flex; justify-content: end;">
+            <div style="display: flex; justify-content: space-between;">
                 <a href="mailto: {{msj.correo}}"><button class="btn btn-secondary">Responder</button></a>
+                <a href="{% url 'eliminar_mensaje' msj.id %}" class="link-icon text-danger"><i class="fa-solid fa-trash"></i></a>
+                
             </div>
             
         </li>

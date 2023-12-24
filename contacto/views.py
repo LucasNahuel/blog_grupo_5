@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import ContactoForm
 from django.contrib import messages
 from .models import MensajeContacto
-from django.views.generic import ListView
+from django.views.generic import ListView, DeleteView
 from .mixins import Superuser_mixin
 from django.urls import reverse
 # Create your views here.
@@ -34,3 +34,13 @@ class Listar_contactos(Superuser_mixin, ListView):
     template_name = 'contacto/lista_mensajes.html'
     model = MensajeContacto
     context_object_name = 'mensajes'
+
+
+class Eliminar_mensaje_contacto(Superuser_mixin, DeleteView):
+    template_name = 'contacto/eliminar_mensaje.html'
+    model = MensajeContacto
+
+    def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS, "Mensaje eliminado correctamente.", "alert alert-success alert-dismissible fade show")
+
+        return reverse('lista_mensajes')

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+    <form method="post" class="form-eliminar"> {% csrf_token %}
+
+        <h4>¿Estás seguro que quieres eliminar éste mensaje?</h4>
+
+        <button type="submit" class="btn btn-primary">Eliminar mensaje</button>
+
+    </form>
+    
+{% endblock content %}
+
+
+{% block sidebar %}
+    
+{% endblock sidebar %}
+    
