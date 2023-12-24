@@ -10,3 +10,7 @@ DATABASES = {
         'PASSWORD': 'contrasenia123'
     }
 }
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['lucasNahuel.pythonanywhere.com']
